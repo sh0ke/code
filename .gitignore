@@ -1,26 +1,26 @@
-            $(function(){
-                var socket = io.connect('http://192.168.1.124:8080');
+$(function(){
+  var socket = io.connect('http://192.168.1.124:8080');
  
-                socket.on('connect', function() {
-                    $('#messages').append('<li>Cliente iniciado</li>');            
-                });
+  socket.on('connect', function() {
+  $('#messages').append('<li>Cliente iniciado</li>');            
+  });
  
-                socket.on('message', function(message) {    
-                    $('#messages').append('<li>' + message + '</li>');
-                });
+  socket.on('message', function(message) {    
+    $('#messages').append('<li>' + message + '</li>');
+  });
  
-                socket.on('disconnect', function() {
-                    $('#messages').append('<li>Desconectado</li>');            
-                });
+  socket.on('disconnect', function() {
+    $('#messages').append('<li>Desconectado</li>');            
+  });
  
-                $('#switchButton').bind('click', function() {
-                    var message = $('#switchButton').text();
-                    socket.send(message);
-                    $('#messages').append('<li>estado: ' + message + '</li>');
+  $('#switchButton').bind('click', function() {
+     var message = $('#switchButton').text();
+     socket.send(message);
+     $('#messages').append('<li>estado: ' + message + '</li>');
  
-                    if (message == 'Encender')
-                        $('#switchButton').text('Apagar');
-                    else 
-                        $('#switchButton').text('Encender');
-                });    
-            });
+     if (message == 'Encender')
+       $('#switchButton').text('Apagar');
+     else 
+       $('#switchButton').text('Encender');
+  });    
+});
